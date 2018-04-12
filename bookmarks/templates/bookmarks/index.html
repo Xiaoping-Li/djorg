@@ -1,8 +1,9 @@
+{% extends "base.html" %}
 {% load bootstrap4 %}
 
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
+{% block title %}Djorg - Bookmarks{% endblock %}
 
+{% block content %}
 <h1>Bookmarks</h1>
 {% if bookmarks %}
 <ol>
@@ -14,11 +15,6 @@
 <p>No bookmark available - please add some!</p>
 {% endif %}
 
-<h2>New Bookmark</h2>
-<form method="POST" class="bookmark-form">
-	{% csrf_token %}
-	{% bootstrap_form form %}
-	{% buttons %}
-	<button type="submit" class="save btn btn-default">Save</button>
-	{% endbuttons %}
-</form>
+{% include "bookmarks/form.html" %}
+
+{% endblock %}
