@@ -2,9 +2,16 @@
 {% if bookmarks %}
 <ol>
 	{% for bookmark in bookmarks %}
-	<li><a href="{{ bookmark.url }}">{{ Bookmark.name }}</a></li>
+	<li><a href="{{ bookmark.url }}">{{ bookmark.name }}</a></li>
 	{% endfor %}
 </ol>
 {% else %}
 <p>No bookmark available - please add some!</p>
 {% endif %}
+
+<h2>New Bookmark</h2>
+<form method="POST" class="bookmark-form">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit" class="save btn btn-default">Save</button>
+</form>
